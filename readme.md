@@ -7,7 +7,7 @@ while maintaning fine control over table's style and markup.
 No more broken indentation, ugly text alignment and manually summing up numbers for "Total" value.  
 _maketable()_ will make it all for you!
 
-_[PDO](http://php.net/manual/en/book.pdo.php) is a state-of-the-art interface used to access
+_[PDO](http://php.net/manual/en/book.pdo.php) is a modern interface used to access
 various database systems (MySQL, SQLite, MS SQL Server, Oracle and 7 others) in PHP in
 a unified manner. With PDO your app can work on a dozen of database systems with minimal effort._
 
@@ -18,7 +18,7 @@ a unified manner. With PDO your app can work on a dozen of database systems with
 With _maketable()_ you can make a table out of PDO SQL query in just 2 lines of code:
 
     include_once 'maketable.php';
-    echo maketable( $pdo_connection->query( 'SELECT `name`, `city`, `orders_number` FROM `clients`' ) );
+    echo maketable( $pdo_connection->query( 'SELECT `name`, `city`, `orders` FROM `clients`' ) );
 
 _maketable()_ will bring column headers for you automatically using information from database.  
 But if you want to set custom headers, you can do it with just another one line of code:
@@ -59,7 +59,7 @@ _maketable()_ also formats boolean values nicely making it appear as checkmarks 
 Now look how all this goes together with PDO code.
 
     include_once 'maketable.php';
-    $sql = 'SELECT `name`, `address`, `orders_number` FROM `clients`';
+    $sql = 'SELECT `name`, `address`, `orders` FROM `clients`';
     try {
         $conn = new PDO( 'mysql:host=MY_HOST;dbname=MY_DATABASE', 'MY_USERNAME', 'MY_PASSWORD' );
         $conn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
@@ -78,10 +78,11 @@ Now look how all this goes together with PDO code.
             $footer_columns = array('Clients: COUNT()', '', 'Total: SUM()')
         );
     } catch( PDOException $e ) {
-        echo '<p class="error">DATABASE ERROR:<br/>' . $e->getMessage() . '<br/>SQL query: ' . $sql . '</p>';
+        echo '<p>DATABASE ERROR:<br/>' . $e->getMessage() . '<br/>SQL query: ' . $sql . '</p>';
     }
     $conn = null;
 
 Parameter names are given here for reference only, they can certainly be omitted.
 
-Detailed parameters description can be found on our [wiki](https://github.com/codedriller/maketable/wiki).
+Detailed parameters description can be found on our
+[wiki](https://github.com/codedriller/maketable/wiki).
