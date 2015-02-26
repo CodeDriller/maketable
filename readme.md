@@ -3,6 +3,7 @@
 _**maketable()**_ is a carefully crafted PHP function that allows a developer to easily create
 professional-looking and standards-compliant (X)HTML tables from results of PDO database queries
 while maintaning fine control over table's style and markup.
+Licensed under the terms of the MIT license.
 
 No more broken indentation, ugly text alignment and manually summing up numbers for "Total" value.  
 _maketable()_ will make it all for you!
